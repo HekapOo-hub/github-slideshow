@@ -1,0 +1,33 @@
+syntax ="proto3";
+
+package go.micro.srv.competition;
+
+option go_package="/competition";
+
+service CompetitionService {
+rpc CreateCompetition(Competition) returns (Response){}
+rpc GetById(Id) returns (Response) {}
+rpc GetAll(Empty)  returns (Response) {}
+rpc SetResult(Request) returns (Response) {}
+}
+message Competition {
+int32 id=1;
+string name=2;
+string result=3;
+string token=4;
+}
+message Id {
+int32 id=1;
+string token=2;
+}
+message Response {
+string response=1;
+}
+message Empty{
+string token=1;
+}
+message Request {
+int32 id=1;
+string result=2;
+string token=3;
+}
