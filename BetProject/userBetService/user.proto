@@ -1,0 +1,40 @@
+syntax ="proto3";
+
+package go.micro.srv.user;
+
+option go_package="/user";
+
+service UserService {
+rpc CreateUser(User) returns(Response) {}
+rpc SignIn(SignInInfo) returns (ResponseWithToken) {}
+rpc GetAll(Empty) returns (Response) {}
+rpc DeleteUser(Id) returns (Response) {}
+rpc SetBalance(SetBalanceInfo) returns (Response) {}
+}
+message User{
+int32 UserId=1;
+string name=2;
+string password=3;
+int32 balance=4;
+string bets=5;
+}
+message SignInInfo {
+string name=1;
+string password=2;
+}
+message Empty {
+}
+message Response {
+string response=1;
+}
+message Id {
+int32 id=1;
+}
+message ResponseWithToken {
+string response=1;
+string token=2;
+}
+message SetBalanceInfo {
+int32 id=1;
+int32 money=2;
+}
